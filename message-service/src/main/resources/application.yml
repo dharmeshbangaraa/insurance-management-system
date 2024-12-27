@@ -1,0 +1,35 @@
+server:
+  port: 8082
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: abcinsuarance@gmail.com
+    password: hske qykc nnia xwea
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  application:
+    name: message-service
+  datasource:
+    url: jdbc:h2:mem:eventDb
+    username: sa
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      enabled: true
+# kafka consumer configs
+  consumer:
+    bootstrap-servers: localhost:9092
+    group-id: message-group
+    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    auto-offset-reset: latest
+    enable-auto-commit: false

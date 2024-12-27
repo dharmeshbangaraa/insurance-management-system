@@ -16,3 +16,10 @@ spring:
   h2:
     console:
       enabled: true
+
+# kafka producer configs
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
