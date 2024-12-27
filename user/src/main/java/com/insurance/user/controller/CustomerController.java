@@ -19,4 +19,7 @@ public class CustomerController {
     public Customer register(@RequestBody Customer customer) {
         return this.customerService.addNewCustomer(customer);
     }
+
+
+
 }
