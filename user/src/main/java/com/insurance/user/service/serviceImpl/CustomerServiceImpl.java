@@ -21,7 +21,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer addNewCustomer(Customer customer) {
         log.info("message published to topic");
-        kafkaTemplate.send("broadcast-topic", String.format("Congratulations %s!!! Your account has been created", customer.getFirstName()));
+        kafkaTemplate.send("broadcast-topic", customer);
         return this.customerRepository.save(customer);
     }
 }

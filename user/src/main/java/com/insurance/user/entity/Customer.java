@@ -1,5 +1,6 @@
 package com.insurance.user.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,6 +24,7 @@ public class Customer {
     private String firstName;
     private String lastName;
     private String contactNumber;
+    @JsonIgnore
     private LocalDate dateOfBirth;
     private String emailId;
     private String password;

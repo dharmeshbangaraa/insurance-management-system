@@ -1,5 +1,8 @@
 package com.insuarance.serviceImpl;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.insuarance.dto.CustomerDto;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
@@ -15,10 +18,12 @@ public class BroadcastMessage {
     private EmailService emailService;
 
     private final Logger logger = LoggerFactory.getLogger(BroadcastMessage.class);
+    private final ObjectMapper jsonObjectMapper = new ObjectMapper();
 
     @KafkaListener(topics = "broadcast-topic", groupId = "message-group")
-    public void receive(ConsumerRecord<String, String> consumerRecord) {
-        logger.info("message consumed {}", consumerRecord.value());
-        emailService.sendEmail("dpbangara@gmail.com", "Test Email", consumerRecord.value());
+    public void receive(ConsumerRecord<String, Object> consumerRecord) throws JsonProcessingException {
+        CustomerDto customerDto = jsonObjectMapper.readValue(consumerRecord.value().toString(), CustomerDto.class);
+        logger.info("message consumed {}", customerDto);
+        emailService.sendEmail(customerDto.emailId(), "Test Email", String.format("Congratulations %s!!! Your account has been created. Thank you.", customerDto.firstName()));
     }
 }
