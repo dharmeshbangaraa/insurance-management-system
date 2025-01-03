@@ -19,6 +19,7 @@ spring:
 
 # kafka producer configs
   kafka:
+    enabled: false
     producer:
       bootstrap-servers: localhost:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
