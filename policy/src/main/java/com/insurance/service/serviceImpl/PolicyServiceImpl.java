@@ -47,4 +47,9 @@ public class PolicyServiceImpl implements PolicyService {
         policy.getAppliedUser().add(userId);
         return this.policyRepository.save(policy);
     }
+
+    @Override
+    public Policy getPolicyById(String policyId) {
+        return this.policyRepository.findById(policyId).orElse(null);
+    }
 }

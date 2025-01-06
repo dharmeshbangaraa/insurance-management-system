@@ -40,4 +40,10 @@ public class PolicyController {
     public ResponseEntity<Policy> enrollUser(@RequestParam Long userId, @RequestParam String policyId) {
         return ResponseEntity.ok(this.policyService.addPolicyToUser(userId, policyId));
     }
+
+    @GetMapping("/")
+    public ResponseEntity<Policy> getUserByPolicyId(@RequestParam Long userId, @RequestParam String policyId) {
+        // TODO;
+        return null;
+    }
 }
