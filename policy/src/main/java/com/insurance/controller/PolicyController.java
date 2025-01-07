@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/v1/policy")
 public class PolicyController {
@@ -38,5 +39,11 @@ public class PolicyController {
     @PostMapping("/user")
     public ResponseEntity<Policy> enrollUser(@RequestParam Long userId, @RequestParam String policyId) {
         return ResponseEntity.ok(this.policyService.addPolicyToUser(userId, policyId));
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<Policy> getUserByPolicyId(@RequestParam Long userId, @RequestParam String policyId) {
+        // TODO by Ashish;
+        return null;
     }
 }

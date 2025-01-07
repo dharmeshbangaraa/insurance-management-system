@@ -14,4 +14,6 @@ public interface PolicyService {
     List<Policy> getUserEnrolledPolicies(Long userId);
 
     Policy addPolicyToUser(Long userId, String policyId);
+
+    Policy getPolicyById(String policyId);
 }
