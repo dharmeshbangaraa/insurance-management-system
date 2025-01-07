@@ -7,6 +7,7 @@ public record CustomerDto(
          String firstName,
          String lastName,
          String contactNumber,
+         String dateOfBirth,
          String emailId,
          String password
 ) {
