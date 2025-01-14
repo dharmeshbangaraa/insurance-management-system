@@ -41,9 +41,9 @@ public class PolicyController {
         return ResponseEntity.ok(this.policyService.addPolicyToUser(userId, policyId));
     }
 
-    @GetMapping("/")
-    public ResponseEntity<Policy> getUserByPolicyId(@RequestParam Long userId, @RequestParam String policyId) {
-        // TODO by Ashish;
-        return null;
-    }
+//    @GetMapping("/")
+//    public ResponseEntity<Policy> getUserByPolicyId(@RequestParam Long userId, @RequestParam String policyId) {
+//        // TODO by Ashish;
+//        return null;
+//    }
 }
