@@ -23,4 +23,9 @@ public class CustomerController {
     public Customer login(@RequestBody LoginRequestDto loginRequestDto) {
         return this.customerService.login(loginRequestDto);
     }
+
+    @PatchMapping("/updatePassword")
+    public Customer updatePassword(@RequestParam Long userId, @RequestParam String updatedPassword) {
+        return this.customerService.changePassword(userId, updatedPassword);
+    }
 }

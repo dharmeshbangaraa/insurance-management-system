@@ -45,4 +45,17 @@ public class CustomerServiceImpl implements CustomerService {
         }
         return null;
     }
+
+    @Override
+    public Customer changePassword(Long userId, String password) {
+        Customer customer = this.customerRepository.findById(userId).orElse(null);
+        if(Objects.nonNull(customer)) {
+            customer.setPassword(password);
+            customerRepository.save(customer);
+        }
+        else {
+            log.info("Customer not found with userId: {}", userId);
+        }
+        return customer;
+    }
 }

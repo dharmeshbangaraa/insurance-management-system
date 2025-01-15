@@ -43,6 +43,7 @@ public class PolicyServiceImpl implements PolicyService {
         log.info("Found policy {}", policy.toString());
         if(policy.getAppliedUser().contains(userId)) {
             log.info("user already applied to policy {}", policyId);
+            return null;
         }
         policy.getAppliedUser().add(userId);
         return this.policyRepository.save(policy);

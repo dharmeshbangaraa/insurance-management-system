@@ -6,4 +6,5 @@ import com.insurance.user.entity.Customer;
 public interface CustomerService {
     Customer addNewCustomer(Customer customer);
     Customer login(LoginRequestDto loginRequestDto);
+    Customer changePassword(Long userId, String password);
 }

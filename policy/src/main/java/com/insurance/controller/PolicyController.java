@@ -3,10 +3,13 @@ package com.insurance.controller;
 import com.insurance.entity.Policy;
 import com.insurance.service.serviceImpl.PolicyServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @CrossOrigin("*")
 @RestController
@@ -36,9 +39,13 @@ public class PolicyController {
         return ResponseEntity.ok(this.policyService.getUserEnrolledPolicies(userId));
     }
 
-    @PostMapping("/user")
-    public ResponseEntity<Policy> enrollUser(@RequestParam Long userId, @RequestParam String policyId) {
-        return ResponseEntity.ok(this.policyService.addPolicyToUser(userId, policyId));
+    @PostMapping("")
+    public ResponseEntity<Policy> enrollUser(@RequestParam String policyId, @RequestParam Long userId) {
+        Policy policy = this.policyService.addPolicyToUser(userId, policyId);
+        if(Objects.nonNull(policy)) {
+            return ResponseEntity.ok(policy);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
 //    @GetMapping("/")
