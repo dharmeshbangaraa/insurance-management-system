@@ -15,5 +15,8 @@ spring:
   h2:
     console:
       enabled: true
+  graphql:
+    graphiql:
+      enabled: true
 
 

@@ -1,0 +1,14 @@
+type Query {
+    fetchPolicies(userId: Int): [policy]
+}
+
+type policy {
+    id: ID!
+    policyName: String
+    category: String
+    company: String
+    cover: String
+    totalPremium: Int
+    duration: Int
+    appliedUser: [Int]
+}

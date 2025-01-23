@@ -41,11 +41,7 @@ public class PolicyController {
 
     @PostMapping("")
     public ResponseEntity<Policy> enrollUser(@RequestParam String policyId, @RequestParam Long userId) {
-        Policy policy = this.policyService.addPolicyToUser(userId, policyId);
-        if(Objects.nonNull(policy)) {
-            return ResponseEntity.ok(policy);
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        return ResponseEntity.ok(this.policyService.addPolicyToUser(userId, policyId));
     }
 
 //    @GetMapping("/")
